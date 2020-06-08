@@ -17,7 +17,7 @@ class CreateItemsTable extends Migration
             $table->id();
             $table->string('title');
             $table->text('description')->nullable();
-            $table->json('attributes')->nullable();
+            $table->json('options')->nullable();
             $table->decimal('price', 10, 2)->default(0);
             $table->string('image_path')->nullable();
             $table->unsignedBigInteger('category_id');
