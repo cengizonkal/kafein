@@ -2,11 +2,11 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Models\Category;
+use App\Models\ServiceTableStatus;
 use Faker\Generator as Faker;
 
-$factory->define(Category::class, function (Faker $faker) {
+$factory->define(ServiceTableStatus::class, function (Faker $faker) {
     return [
-
+        //
     ];
 });

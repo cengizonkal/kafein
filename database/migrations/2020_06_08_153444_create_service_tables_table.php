@@ -17,6 +17,10 @@ class CreateServiceTablesTable extends Migration
             $table->id();
             $table->string('code', '50')->nullable();
             $table->text('description')->nullable();
+            $table->unsignedBigInteger('service_table_status_id');
+            $table->foreign('service_table_status_id')
+                ->references('id')
+                ->on('service_table_statuses');
             $table->timestamps();
         });
     }
