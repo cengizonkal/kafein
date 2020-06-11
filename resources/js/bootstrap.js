@@ -31,6 +31,7 @@ import 'datatables.net-bs4';
 import 'datatables.net-buttons-bs4';
 import 'datatables.net-buttons/js/buttons.html5.js';
 import 'datatables.net-responsive-bs4';
+import '@fortawesome/fontawesome-free'
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
