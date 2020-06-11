@@ -5,39 +5,47 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <table id="item-table" class="table table-bordered table-striped">
-                <thead>
-                <tr>
-                    <th></th>
-                    <th>ID</th>
-                    <th>ADI</th>
-                </tr>
-
-                </thead>
-                <tbody>
-                @foreach($categories as $category)
+            <div class="col-md-12">
+                <table id="item-table" class="table table-bordered table-striped">
+                    <thead>
                     <tr>
-                        <td>
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"
-                                        aria-haspopup="true" aria-expanded="false">
-                                    <i class="fas fa-cog"></i>
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Separated link</a>
-                                </div>
-                            </div>
-                        </td>
-                        <td>{{$category->id}}</td>
-                        <td>{{$category->title}}</td>
+                        <th></th>
+                        <th>ID</th>
+                        <th>ADI</th>
                     </tr>
-                @endforeach
-                </tbody>
-            </table>
+
+                    </thead>
+                    <tbody>
+                    @foreach($categories as $category)
+                        <tr>
+                            <td>
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-secondary dropdown-toggle"
+                                            data-toggle="dropdown"
+                                            aria-haspopup="true" aria-expanded="false">
+                                        <i class="fas fa-cog"></i>
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="#">Düzenle</a>
+                                        <div class="dropdown-divider"></div>
+                                        <form
+                                            action="{{action([\App\Http\Controllers\Admin\CategoryController::class,'destroy'],['category'=>$category->id])}}"
+                                            method="post">
+                                            @method('delete')
+                                            @csrf
+                                            <button class="dropdown-item" type="submit">Sil</button>
+                                        </form>
+
+                                    </div>
+                                </div>
+                            </td>
+                            <td>{{$category->id}}</td>
+                            <td>{{$category->title}}</td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 @endsection
