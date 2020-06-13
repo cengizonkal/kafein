@@ -26,7 +26,8 @@
                                         <i class="fas fa-cog"></i>
                                     </button>
                                     <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="#">Düzenle</a>
+                                        <a class="dropdown-item"
+                                           href="{{action([\App\Http\Controllers\Admin\CategoryController::class,'edit'],['category'=>$category->id])}}">Düzenle</a>
                                         <div class="dropdown-divider"></div>
                                         <form
                                             action="{{action([\App\Http\Controllers\Admin\CategoryController::class,'destroy'],['category'=>$category->id])}}"

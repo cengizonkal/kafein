@@ -49,15 +49,14 @@ class CategoryController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param \App\Models\Category $category
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit(Category $category)
     {
-        //
+        /** @var Category[] $categories */
+        $categories = Category::all()->sortBy('title');
+        return view('admin/category_edit')
+            ->with('categories', $categories)
+            ->with('category', $category);
     }
 
     /**
@@ -69,7 +68,7 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+
     }
 
     /**
