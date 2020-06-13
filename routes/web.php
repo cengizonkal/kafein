@@ -24,3 +24,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('admin/categories', 'Admin\CategoryController@index');
 Route::delete('admin/categories/{category}', 'Admin\CategoryController@destroy');
 Route::get('admin/categories/{category}/edit', 'Admin\CategoryController@edit');
+Route::patch('admin/categories/{category}', 'Admin\CategoryController@update');
