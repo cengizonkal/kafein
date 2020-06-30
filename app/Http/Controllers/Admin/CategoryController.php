@@ -17,25 +17,21 @@ class CategoryController extends Controller
             ->with('categories', $categories);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        /** @var Category[] $categories */
+        $categories = Category::all()->sortBy('title');
+        return view('admin/category_create')
+            ->with('categories', $categories);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $category = new Category();
+        $category->title = $request->title;
+        $category->category_id = $request->category_id;
+        $category->save();
+        return redirect()->back()->with('message', 'Kategori '.$category->title.' oluşturuldu.');
     }
 
     /**
@@ -46,7 +42,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+
     }
 
 

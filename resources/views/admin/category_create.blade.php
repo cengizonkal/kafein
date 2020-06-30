@@ -7,12 +7,11 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
-                <h2>{{$category->title}} Kategorisini Güncelle</h2>
+                <h2>Yeni Kategori Oluştur</h2>
                 <hr>
                 <form method="post"
-                      action="{{action([\App\Http\Controllers\Admin\CategoryController::class,'update'],['category'=>$category->id])}}">
+                      action="{{action([\App\Http\Controllers\Admin\CategoryController::class,'store'])}}">
                     @csrf
-                    @method('patch')
                     <div class="form-group">
                         <label for="category_id">Üst Kategori</label>
                         <select name="category_id" id="category_id"
@@ -21,7 +20,7 @@
                             @foreach($categories as $cat)
                                 <option
                                     value="{{$cat->id}}"
-                                    @if($cat->id==$category->category_id) selected @endif>{{$cat->title}}</option>
+                                    @if($cat->id==old('category_id')) selected @endif>{{$cat->title}}</option>
                             @endforeach
                         </select>
                         @error('category_id')
@@ -31,7 +30,7 @@
                     <div class="form-group">
                         <label for="title">Adı</label>
                         <input id="title" type="text" name="title"
-                               value="{{$category->title}}"
+                               value="{{old('title')}}"
                                class="form-control @error('title') is-invalid @enderror"
                                placeholder="Lütfen bir kategori adı giriniz"
                                required>
@@ -40,7 +39,7 @@
                         @enderror
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Güncelle</button>
+                    <button type="submit" class="btn btn-primary">Oluştur</button>
                 </form>
             </div>
         </div>
@@ -55,5 +54,6 @@
         })
     </script>
 @endpush
+
 
 

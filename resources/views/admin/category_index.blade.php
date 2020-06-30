@@ -4,12 +4,18 @@
 @extends('layouts.app')
 @section('content')
     <div class="container">
+        <div class="row">
+            <div class="col-md-12 mb-2">
+                <a href="{{action([\App\Http\Controllers\Admin\CategoryController::class,'create'])}}" class="btn btn-success"><i class="fa fa-plus"></i> Yeni Ekle</a>
+            </div>
+        </div>
         <div class="row justify-content-center">
+
             <div class="col-md-12">
                 <table id="item-table" class="table table-bordered table-striped">
                     <thead>
                     <tr>
-                        <th></th>
+                        <th style="width: 5%"></th>
                         <th>ID</th>
                         <th>ADI</th>
                         <th>Üst</th>
