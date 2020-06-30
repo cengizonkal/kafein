@@ -12,6 +12,7 @@
                         <th></th>
                         <th>ID</th>
                         <th>ADI</th>
+                        <th>Üst</th>
                     </tr>
 
                     </thead>
@@ -42,6 +43,7 @@
                             </td>
                             <td>{{$category->id}}</td>
                             <td>{{$category->title}}</td>
+                            <td>@isset($category->category){{$category->category->title}}@endisset</td>
                         </tr>
                     @endforeach
                     </tbody>

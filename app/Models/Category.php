@@ -13,10 +13,11 @@ use Illuminate\Database\Eloquent\Model;
  * @property mixed category_id
  * @property mixed created_at
  * @property mixed updated_at
+ * @property Category category
  */
 class Category extends Model
 {
-    public function parent()
+    public function category()
     {
         return $this->belongsTo(Category::class);
     }
