@@ -31,7 +31,11 @@ class CategoryController extends Controller
         $category->title = $request->title;
         $category->category_id = $request->category_id;
         $category->save();
-        return redirect()->back()->with('message', 'Kategori '.$category->title.' oluşturuldu.');
+
+        if ($request->hasFile('image') && $request->file('image')->isValid()) {
+            $request->image->storeAs('images', 'filename.jpg', 's3');
+        }
+        return redirect()->back()->with('message', 'Kategori ' . $category->title . ' oluşturuldu.');
     }
 
     /**
