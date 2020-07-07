@@ -10,7 +10,8 @@
                 <h2>Yeni Kategori Oluştur</h2>
                 <hr>
                 <form method="post"
-                      action="{{action([\App\Http\Controllers\Admin\CategoryController::class,'store'])}}">
+                      action="{{action([\App\Http\Controllers\Admin\CategoryController::class,'store'])}}"
+                      enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                         <label for="category_id">Üst Kategori</label>
@@ -35,6 +36,15 @@
                                placeholder="Lütfen bir kategori adı giriniz"
                                required>
                         @error('title')
+                        <div class="invalid-feedback">{{$message}}</div>
+                        @enderror
+                    </div>
+
+                    <div class="form-group">
+                        <label for="title">Resim</label>
+                        <input id="image" type="file" name="image"
+                               class="form-control-file @error('image') is-invalid @enderror">
+                        @error('image')
                         <div class="invalid-feedback">{{$message}}</div>
                         @enderror
                     </div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
 
 class CategoryController extends Controller
 {
@@ -33,7 +34,12 @@ class CategoryController extends Controller
         $category->save();
 
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
-            $request->image->storeAs('images', 'filename.jpg', 's3');
+            $path   = $request->file('image');
+
+            Image::make($path)->resize(168, 168, function ($constraint) {
+                $constraint->aspectRatio();
+                $constraint->upsize();
+            })->save(public_path('images/'.$category->id.'.png'));
         }
         return redirect()->back()->with('message', 'Kategori ' . $category->title . ' oluşturuldu.');
     }
