@@ -1,12 +1,14 @@
 <?php
 /** @var App\Models\Category[] $categories */
+
 ?>
 @extends('layouts.app')
 @section('content')
     <div class="container">
         <div class="row">
             <div class="col-md-12 mb-2">
-                <a href="{{action([\App\Http\Controllers\Admin\CategoryController::class,'create'])}}" class="btn btn-success"><i class="fa fa-plus"></i> Yeni Ekle</a>
+                <a href="{{action([\App\Http\Controllers\Admin\CategoryController::class,'create'])}}"
+                   class="btn btn-success"><i class="fa fa-plus"></i> Yeni Ekle</a>
             </div>
         </div>
         <div class="row justify-content-center">
@@ -19,6 +21,7 @@
                         <th>ID</th>
                         <th>ADI</th>
                         <th>Üst</th>
+                        <th>Resim</th>
                     </tr>
 
                     </thead>
@@ -27,7 +30,7 @@
                         <tr>
                             <td>
                                 <div class="btn-group">
-                                    <button type="button" class="btn btn-secondary dropdown-toggle"
+                                    <button type="button" class="btn btn-secondary btn-sm dropdown-toggle"
                                             data-toggle="dropdown"
                                             aria-haspopup="true" aria-expanded="false">
                                         <i class="fas fa-cog"></i>
@@ -50,6 +53,7 @@
                             <td>{{$category->id}}</td>
                             <td>{{$category->title}}</td>
                             <td>@isset($category->category){{$category->category->title}}@endisset</td>
+                            <td><img src="{{$category->imagePath}}"></td>
                         </tr>
                     @endforeach
                     </tbody>

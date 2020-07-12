@@ -33,14 +33,7 @@ class CategoryController extends Controller
         $category->category_id = $request->category_id;
         $category->save();
 
-        if ($request->hasFile('image') && $request->file('image')->isValid()) {
-            $path   = $request->file('image');
-
-            Image::make($path)->resize(168, 168, function ($constraint) {
-                $constraint->aspectRatio();
-                $constraint->upsize();
-            })->save(public_path('images/'.$category->id.'.png'));
-        }
+        $this->uploadImage($request, $category);
         return redirect()->back()->with('message', 'Kategori ' . $category->title . ' oluşturuldu.');
     }
 
@@ -77,6 +70,7 @@ class CategoryController extends Controller
         $category->title = $request->title;
         $category->category_id = $request->category_id;
         $category->save();
+        $this->uploadImage($request, $category);
         return redirect()->back()->with('message', 'Güncellendi');
 
     }
@@ -91,5 +85,24 @@ class CategoryController extends Controller
     {
         $category->forceDelete();
         return redirect()->back()->with('message', 'Silindi');
+    }
+
+    /**
+     * @param Request $request
+     * @param Category $category
+     */
+    private function uploadImage(Request $request, Category $category): void
+    {
+        if ($request->hasFile('image') && $request->file('image')->isValid()) {
+            $path = $request->file('image');
+            Image::make($path)->resize(
+                config('image.category.width'),
+                config('image.category.height'),
+                function ($constraint) {
+                    $constraint->aspectRatio();
+                    $constraint->upsize();
+                }
+            )->save(public_path('images/categories/' . $category->id . '.png'));
+        }
     }
 }

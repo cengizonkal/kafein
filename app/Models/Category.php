@@ -17,8 +17,17 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Category extends Model
 {
+    protected $appends = ['image_path'];
+
     public function category()
     {
         return $this->belongsTo(Category::class);
     }
+
+    public function getImagePathAttribute()
+    {
+        return url('images/categories/' . $this->id . '.png');
+    }
+
+
 }
