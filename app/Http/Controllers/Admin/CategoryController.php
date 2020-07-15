@@ -45,7 +45,6 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-
     }
 
 
@@ -72,7 +71,6 @@ class CategoryController extends Controller
         $category->save();
         $this->uploadImage($request, $category);
         return redirect()->back()->with('message', 'Güncellendi');
-
     }
 
     /**
@@ -94,15 +92,25 @@ class CategoryController extends Controller
     private function uploadImage(Request $request, Category $category): void
     {
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
-            $path = $request->file('image');
-            Image::make($path)->resize(
+            $temporaryPath = $request->file('image');
+            $realName = $request->file('image')->getClientOriginalName();
+            $imagePath = public_path('images/categories/' . $category->id . '.png');
+            Image::make($temporaryPath)->resize(
                 config('image.category.width'),
                 config('image.category.height'),
                 function ($constraint) {
                     $constraint->aspectRatio();
                     $constraint->upsize();
                 }
-            )->save(public_path('images/categories/' . $category->id . '.png'));
+            )->save($imagePath);
+            $category->image()->create(
+                [
+                    'path' => $imagePath,
+                    'width' => config('image.category.width'),
+                    'height' => config('image.category.height'),
+                    'original_name' => $realName
+                ]
+            );
         }
     }
 }
