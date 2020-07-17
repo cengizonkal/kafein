@@ -69,7 +69,6 @@ class CategoryController extends Controller
         $category->title = $request->title;
         $category->category_id = $request->category_id;
         $category->save();
-        $this->uploadImage($request, $category);
         return redirect()->back()->with('message', 'Güncellendi');
     }
 

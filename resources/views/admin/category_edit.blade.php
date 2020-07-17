@@ -11,8 +11,7 @@
                 <h2>{{$category->title}} Kategorisini Güncelle</h2>
                 <hr>
                 <form method="post"
-                      action="{{action([\App\Http\Controllers\Admin\CategoryController::class,'update'],['category'=>$category->id])}}"
-                      enctype="multipart/form-data">
+                      action="{{action([\App\Http\Controllers\Admin\CategoryController::class,'update'],['category'=>$category->id])}}">
                     @csrf
                     @method('patch')
                     <div class="form-group">
@@ -38,14 +37,6 @@
                                placeholder="Lütfen bir kategori adı giriniz"
                                required>
                         @error('title')
-                        <div class="invalid-feedback">{{$message}}</div>
-                        @enderror
-                    </div>
-                    <div class="form-group">
-                        <label for="title">Resim</label>
-                        <input id="image" type="file" name="image"
-                               class="form-control-file @error('image') is-invalid @enderror">
-                        @error('image')
                         <div class="invalid-feedback">{{$message}}</div>
                         @enderror
                     </div>

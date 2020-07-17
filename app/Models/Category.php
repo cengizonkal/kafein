@@ -24,9 +24,9 @@ class Category extends Model
         return $this->belongsTo(Category::class);
     }
 
-    public function image()
+    public function images()
     {
-        return $this->morphOne(Image::class, 'imageable');
+        return $this->morphMany(Image::class, 'imageable');
     }
 
 

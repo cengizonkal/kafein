@@ -21,7 +21,6 @@
                         <th>ID</th>
                         <th>ADI</th>
                         <th>Üst</th>
-                        <th>Resim</th>
                     </tr>
 
                     </thead>
@@ -36,8 +35,11 @@
                                         <i class="fas fa-cog"></i>
                                     </button>
                                     <div class="dropdown-menu">
+
                                         <a class="dropdown-item"
                                            href="{{action([\App\Http\Controllers\Admin\CategoryController::class,'edit'],['category'=>$category->id])}}">Düzenle</a>
+                                        <a class="dropdown-item"
+                                           href="{{action([\App\Http\Controllers\Admin\CategoryImageController::class,'index'],['category'=>$category->id])}}">Resimler</a>
                                         <div class="dropdown-divider"></div>
                                         <form
                                             action="{{action([\App\Http\Controllers\Admin\CategoryController::class,'destroy'],['category'=>$category->id])}}"
@@ -53,7 +55,6 @@
                             <td>{{$category->id}}</td>
                             <td>{{$category->title}}</td>
                             <td>@isset($category->category){{$category->category->title}}@endisset</td>
-                            <td><img src="{{$category->imagePath}}"></td>
                         </tr>
                     @endforeach
                     </tbody>
