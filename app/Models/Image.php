@@ -17,13 +17,20 @@ use Illuminate\Database\Eloquent\Model;
  * @property mixed original_name
  * @property mixed created_at
  * @property mixed updated_at
+ * @property mixed full_path
  */
 class Image extends Model
 {
+    protected $appends = ['full_path'];
 
     public function imageable()
     {
         return $this->morphTo();
+    }
+
+    public function getFullPathAttribute($path)
+    {
+        return url($path);
     }
 
 }
