@@ -5,7 +5,7 @@
 @section('content')
     <div class="container">
         <div class="col-md-12">
-            <form action="" method="post" enctype="multipart/form-data">
+            <form action="{{action([\App\Http\Controllers\Admin\CategoryImageController::class,'store'],['category'=>$category->id])}}" method="post" enctype="multipart/form-data">
                 {{csrf_field()}}
                 <div class="form-group">
                     <label></label>
