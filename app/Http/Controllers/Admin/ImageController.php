@@ -12,10 +12,12 @@ class ImageController extends Controller
 {
     public function index($imageable, $id)
     {
-        $imageable = config('models.' . $imageable)::find($id);
-        abort_if(!$imageable, 404);
-        $images = $imageable->images();
+        $imageableClass = config('models.' . $imageable)::find($id);
+        abort_if(!$imageableClass, 404);
+        $images = $imageableClass->images;
         return view('admin/image_index')
+            ->with('imageable', $imageable)
+            ->with('imageableClass', $imageableClass)
             ->with('images', $images);
     }
 

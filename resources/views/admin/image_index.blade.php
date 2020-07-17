@@ -7,7 +7,7 @@
     <div class="container">
         <div class="col-md-12">
             <form
-                action="{{action([\App\Http\Controllers\Admin\ImageController::class,'store'],['category'=>$category->id])}}"
+                action="{{action([\App\Http\Controllers\Admin\ImageController::class,'store'],['imageable'=>$imageable,'id'=>$imageableClass->id])}}"
                 method="post" enctype="multipart/form-data">
                 {{csrf_field()}}
                 <div class="form-group">
@@ -24,12 +24,12 @@
 
                 <div class="col-md-4">
                     <div class="card mb-4 shadow-sm">
-                        <img src="{{$image->path}}" class="img-thumbnail rounded mx-auto d-block"
+                        <img src="{{$image->full_path}}" class="img-thumbnail rounded mx-auto d-block"
                              style="width: 150px;height: 100%">
                         <div class="card-body">
                             <p class="card-text"></p>
                             <div class="d-flex justify-content-between align-items-center">
-                                <form action="{{action([\App\Http\Controllers\Admin\ImageController::class,'delete'],['image'=>$image->id])}}">
+                                <form action="{{action([\App\Http\Controllers\Admin\ImageController::class,'destroy'],['image'=>$image->id])}}">
                                     <div class="btn-group">
                                         <a href="{{url($image->full_path)}}" target="_blank"
                                            class="btn btn-sm btn-outline-secondary">Göster</a>

@@ -28,9 +28,9 @@ class Image extends Model
         return $this->morphTo();
     }
 
-    public function getFullPathAttribute($path)
+    public function getFullPathAttribute()
     {
-        return url($path);
+        return url($this->path);
     }
 
 }

@@ -29,5 +29,6 @@ Route::patch('admin/categories/{category}', 'Admin\CategoryController@update');
 Route::get('admin/categories/create', 'Admin\CategoryController@create');
 
 Route::get('admin/{imageable}/{id}/images', 'Admin\ImageController@index');
-Route::post('admin/{imageable}{id}/images', 'Admin\ImageController@store');
+Route::post('admin/{imageable}/{id}/images', 'Admin\ImageController@store');
+Route::delete('admin/images/{image}', 'Admin\ImageController@destroy');
 
