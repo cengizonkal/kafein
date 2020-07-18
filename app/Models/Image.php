@@ -19,10 +19,11 @@ use Illuminate\Database\Eloquent\Model;
  * @property mixed created_at
  * @property mixed updated_at
  * @property mixed full_path
+ * @property mixed full_thumbnail_path
  */
 class Image extends Model
 {
-    protected $appends = ['full_path'];
+    protected $appends = ['full_path', 'full_thumbnail_path'];
     protected $guarded = ['id'];
 
     public function imageable()
@@ -33,6 +34,11 @@ class Image extends Model
     public function getFullPathAttribute()
     {
         return url($this->path);
+    }
+
+    public function getFullThumbnailPathAttribute()
+    {
+        return url($this->thumbnail);
     }
 
 }
