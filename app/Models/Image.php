@@ -18,12 +18,12 @@ use Illuminate\Database\Eloquent\Model;
  * @property mixed original_name
  * @property mixed created_at
  * @property mixed updated_at
- * @property mixed full_path
- * @property mixed full_thumbnail_path
+ * @property mixed url
+ * @property mixed thumbnail_url
  */
 class Image extends Model
 {
-    protected $appends = ['full_path', 'full_thumbnail_path'];
+    protected $appends = ['url', 'thumbnail_url'];
     protected $guarded = ['id'];
 
     public function imageable()
@@ -31,12 +31,12 @@ class Image extends Model
         return $this->morphTo();
     }
 
-    public function getFullPathAttribute()
+    public function getUrlAttribute()
     {
         return url($this->path);
     }
 
-    public function getFullThumbnailPathAttribute()
+    public function getThumbnailUrlAttribute()
     {
         return url($this->thumbnail);
     }

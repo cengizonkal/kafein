@@ -25,7 +25,7 @@
 
                 <div class="col-md-4">
                     <div class="card mb-4 shadow-sm">
-                        <img src="{{$image->full_thumbnail_path}}" class="img-thumbnail rounded mx-auto d-block"
+                        <img src="{{$image->thumbnail_url}}" class="img-thumbnail rounded mx-auto d-block"
                              style="width: 150px;height: 100%">
                         <div class="card-body">
                             <p class="card-text">{{$image->original_name}}</p>
@@ -36,7 +36,7 @@
                                     @csrf
                                     @method('delete')
                                     <div class="btn-group">
-                                        <a href="{{url($image->full_path)}}" target="_blank"
+                                        <a href="{{url($image->url)}}" target="_blank"
                                            class="btn btn-sm btn-outline-secondary">Göster</a>
                                         <button type="submit" class="btn btn-sm btn-outline-danger swal-form-confirm"
                                         data-message="Bu resmi siliyorsunuz ">Sil</button>
