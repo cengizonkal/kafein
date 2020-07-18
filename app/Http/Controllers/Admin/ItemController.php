@@ -14,10 +14,11 @@ class ItemController extends Controller
         if ($category) {
             $items = $category->items;
         } else {
-            $items = Item::all();
+            $items = Item::with('category')->get();
         }
 
         return view('admin/item_index')
+            ->with('category', $category)
             ->with('items', $items);
     }
 }

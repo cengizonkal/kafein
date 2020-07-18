@@ -1,6 +1,8 @@
 <?php
 /** @var App\Models\Item[] $items */
 
+/** @var App\Models\Category $category */
+
 ?>
 @extends('layouts.app')
 @section('content')
@@ -8,7 +10,7 @@
         <div class="row">
 
             <div class="col-md-12 mb-2">
-                <h4>Kategoriler</h4>
+                <h4>Ürünler @if($category)<small>{{$category->title}}</small>@endif</h4>
                 <hr>
                 <a href="{{action([\App\Http\Controllers\Admin\CategoryController::class,'create'])}}"
                    class="btn btn-success btn-sm"><i class="fa fa-plus"></i> Yeni Ürün Ekle</a>
@@ -23,6 +25,8 @@
                         <th style="width: 5%"></th>
                         <th>ID</th>
                         <th>ADI</th>
+                        <th>Fiyat</th>
+                        <th>Kategori</th>
 
                     </tr>
                     </thead>
@@ -44,6 +48,8 @@
                             </td>
                             <td>{{$item->id}}</td>
                             <td>{{$item->title}}</td>
+                            <td>{{$item->price}}</td>
+                            <td>{{$item->category->title}}</td>
                         </tr>
                     @endforeach
                     </tbody>

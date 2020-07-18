@@ -18,6 +18,7 @@ use Ramsey\Collection\Collection;
  * @property mixed created_at
  * @property mixed updated_at
  * @property Image[]|Collection images
+ * @property Category category
  */
 class Item extends Model
 {
