@@ -40,15 +40,6 @@
                         @enderror
                     </div>
 
-                    <div class="form-group">
-                        <label for="title">Resim</label>
-                        <input id="image" type="file" name="image"
-                               class="form-control-file @error('image') is-invalid @enderror">
-                        @error('image')
-                        <div class="invalid-feedback">{{$message}}</div>
-                        @enderror
-                    </div>
-
                     <button type="submit" class="btn btn-primary">Oluştur</button>
                 </form>
             </div>

@@ -7,8 +7,8 @@
     <div class="container">
         <div class="col-md-12">
             <form class="form-inline"
-                action="{{action([\App\Http\Controllers\Admin\ImageController::class,'store'],['imageable'=>$imageable,'id'=>$imageableClass->id])}}"
-                method="post" enctype="multipart/form-data">
+                  action="{{action([\App\Http\Controllers\Admin\ImageController::class,'store'],['imageable'=>$imageable,'id'=>$imageableClass->id])}}"
+                  method="post" enctype="multipart/form-data">
                 {{csrf_field()}}
                 <div class="form-group">
                     <label></label>
@@ -25,8 +25,10 @@
 
                 <div class="col-md-4">
                     <div class="card mb-4 shadow-sm">
-                        <img src="{{$image->thumbnail_url}}" class="img-thumbnail rounded mx-auto d-block"
-                             style="width: 150px;height: 100%">
+                        <a href="{{url($image->url)}}" target="_blank">
+                            <img src="{{$image->thumbnail_url}}" class="img-thumbnail rounded mx-auto d-block"
+                                 style="width: 150px;height: 100%">
+                        </a>
                         <div class="card-body">
                             <p class="card-text">{{$image->original_name}}</p>
                             <div class="d-flex justify-content-between align-items-center">
@@ -39,7 +41,8 @@
                                         <a href="{{url($image->url)}}" target="_blank"
                                            class="btn btn-sm btn-outline-secondary">Göster</a>
                                         <button type="submit" class="btn btn-sm btn-outline-danger swal-form-confirm"
-                                        data-message="Bu resmi siliyorsunuz ">Sil</button>
+                                                data-message="Bu resmi siliyorsunuz ">Sil
+                                        </button>
                                     </div>
                                 </form>
                                 <small class="text-muted">{{$image->id}}</small>

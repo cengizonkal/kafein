@@ -13,7 +13,7 @@ class CategoryController extends Controller
     public function index()
     {
         /** @var Category[] $categories */
-        $categories = Category::all();
+        $categories = Category::with('images')->get();
         return view('admin/category_index')
             ->with('categories', $categories);
     }
@@ -32,21 +32,8 @@ class CategoryController extends Controller
         $category->title = $request->title;
         $category->category_id = $request->category_id;
         $category->save();
-
-        $this->uploadImage($request, $category);
         return redirect()->back()->with('message', 'Kategori ' . $category->title . ' oluşturuldu.');
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param \App\Models\Category $category
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Category $category)
-    {
-    }
-
 
     public function edit(Category $category)
     {
@@ -84,32 +71,5 @@ class CategoryController extends Controller
         return redirect()->back()->with('message', 'Silindi');
     }
 
-    /**
-     * @param Request $request
-     * @param Category $category
-     */
-    private function uploadImage(Request $request, Category $category): void
-    {
-        if ($request->hasFile('image') && $request->file('image')->isValid()) {
-            $temporaryPath = $request->file('image');
-            $realName = $request->file('image')->getClientOriginalName();
-            $imagePath = public_path('images/categories/' . $category->id . '.png');
-            Image::make($temporaryPath)->resize(
-                config('image.category.width'),
-                config('image.category.height'),
-                function ($constraint) {
-                    $constraint->aspectRatio();
-                    $constraint->upsize();
-                }
-            )->save($imagePath);
-            $category->image()->create(
-                [
-                    'path' => $imagePath,
-                    'width' => config('image.category.width'),
-                    'height' => config('image.category.height'),
-                    'original_name' => $realName
-                ]
-            );
-        }
-    }
+
 }
