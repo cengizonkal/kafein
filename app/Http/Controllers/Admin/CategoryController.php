@@ -13,7 +13,7 @@ class CategoryController extends Controller
     public function index()
     {
         /** @var Category[] $categories */
-        $categories = Category::with('images')->get();
+        $categories = Category::with('images')->with('items')->get();
         return view('admin/category_index')
             ->with('categories', $categories);
     }

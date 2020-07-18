@@ -38,10 +38,13 @@
                                         <i class="fas fa-cog"></i>
                                     </button>
                                     <div class="dropdown-menu">
-                                        <a class="dropdown-item"
-                                           href="{{action([\App\Http\Controllers\Admin\ItemController::class,'index'],['category'=>$category->id])}}">Ürünler</a>
+
                                         <a class="dropdown-item"
                                            href="{{action([\App\Http\Controllers\Admin\CategoryController::class,'edit'],['category'=>$category->id])}}">Düzenle</a>
+                                        <a class="dropdown-item"
+                                           href="{{url("admin/categories/{$category->id}/items")}}">Ürünler
+                                            <span class="badge badge-info">{{$category->items->count()}}</span>
+                                        </a>
                                         <a class="dropdown-item"
                                            href="{{action([\App\Http\Controllers\Admin\ImageController::class,'index'],['imageable'=>'categories','id'=>$category->id])}}">Resimler
                                             <span class="badge badge-info">{{$category->images->count()}}</span>
