@@ -41,7 +41,20 @@
                                         <i class="fas fa-cog"></i>
                                     </button>
                                     <div class="dropdown-menu">
-
+                                        <a class="dropdown-item"
+                                           href="{{action([\App\Http\Controllers\Admin\ItemController::class,'edit'],['item'=>$item->id])}}">Düzenle</a>
+                                        <a class="dropdown-item"
+                                           href="{{action([\App\Http\Controllers\Admin\ImageController::class,'index'],['imageable'=>'items','id'=>$item->id])}}">Resimler
+                                            <span class="badge badge-info">{{$item->images->count()}}</span>
+                                        </a>
+                                        <div class="dropdown-divider"></div>
+                                        <form
+                                            action="{{action([\App\Http\Controllers\Admin\ItemController::class,'destroy'],['item'=>$item->id])}}"
+                                            method="post">
+                                            @method('delete')
+                                            @csrf
+                                            <button class="dropdown-item" type="submit">Sil</button>
+                                        </form>
 
                                     </div>
                                 </div>
