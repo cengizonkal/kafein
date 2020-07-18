@@ -22,6 +22,7 @@ use Illuminate\Database\Eloquent\Model;
 class Image extends Model
 {
     protected $appends = ['full_path'];
+    protected $guarded = ['id'];
 
     public function imageable()
     {

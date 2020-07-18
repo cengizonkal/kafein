@@ -1,12 +1,12 @@
 <?php
 
 return [
-    'category' => [
-        'height' => 168,
+
+    'height' => 705,
+    'width' => 940,
+
+    'thumbnail' => [
         'width' => 168,
-    ],
-    'banner' => [
-        'width' => 940,
-        'height' => 705
+        'height' => 168
     ]
 ];

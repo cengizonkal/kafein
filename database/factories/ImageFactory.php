@@ -13,6 +13,7 @@ $factory->define(
             'width' => 100,
             'height' => 100,
             'path' => 'images/logo.png',
+            'thumbnail' => 'images/logo_t.png',
             'is_selected' => false
         ];
     }

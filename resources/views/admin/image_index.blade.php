@@ -6,18 +6,19 @@
 @section('content')
     <div class="container">
         <div class="col-md-12">
-            <form
+            <form class="form-inline"
                 action="{{action([\App\Http\Controllers\Admin\ImageController::class,'store'],['imageable'=>$imageable,'id'=>$imageableClass->id])}}"
                 method="post" enctype="multipart/form-data">
                 {{csrf_field()}}
                 <div class="form-group">
                     <label></label>
-                    <input type="file" class="form-control-file">
+                    <input type="file" name="image" class="form-control-file">
                 </div>
-                <button type="submit" class="btn btn-success">Ekle</button>
+                <button type="submit" class="btn btn-success btn-sm">Ekle</button>
             </form>
         </div>
     </div>
+    <div class=""><br></div>
     <div class="container">
         <div class="row">
             @foreach($images as $image)
@@ -27,7 +28,7 @@
                         <img src="{{$image->full_path}}" class="img-thumbnail rounded mx-auto d-block"
                              style="width: 150px;height: 100%">
                         <div class="card-body">
-                            <p class="card-text"></p>
+                            <p class="card-text">{{$image->original_name}}</p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <form
                                     action="{{action([\App\Http\Controllers\Admin\ImageController::class,'destroy'],['image'=>$image->id])}}"
@@ -41,7 +42,7 @@
                                         data-message="Bu resmi siliyorsunuz ">Sil</button>
                                     </div>
                                 </form>
-                                <small class="text-muted">{{$image->id}}-{{$image->original_name}}</small>
+                                <small class="text-muted">{{$image->id}}</small>
                             </div>
                         </div>
                     </div>

@@ -20,6 +20,7 @@ class CreateImagesTable extends Migration
                 $table->unsignedInteger('imageable_id');
                 $table->string('imageable_type');
                 $table->string('path');
+                $table->string('thumbnail');
                 $table->boolean('is_selected')->default(0);
                 $table->unsignedInteger('width')->nullable();
                 $table->unsignedInteger('height')->nullable();
