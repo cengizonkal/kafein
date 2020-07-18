@@ -31,9 +31,25 @@ const app = new Vue({
     el: '#app',
 });
 
-$.extend( true, $.fn.dataTable.defaults, {
+$.extend(true, $.fn.dataTable.defaults, {
     "language": {
         "url": "/js/Turkish.json"
     }
-} );
-
+});
+$('.swal-form-confirm').click(function (e) {
+    e.preventDefault();
+    Swal.fire({
+        title: 'Emin misiniz ?',
+        text: $(this).attr('data-message'),
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Evet',
+        cancelButtonText: 'İptal'
+    }).then((result) => {
+        if (result.value) {
+            $(this).parents('form')[0].submit();
+        }
+    })
+})

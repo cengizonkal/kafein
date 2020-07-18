@@ -29,19 +29,23 @@
                         <div class="card-body">
                             <p class="card-text"></p>
                             <div class="d-flex justify-content-between align-items-center">
-                                <form action="{{action([\App\Http\Controllers\Admin\ImageController::class,'destroy'],['image'=>$image->id])}}">
+                                <form
+                                    action="{{action([\App\Http\Controllers\Admin\ImageController::class,'destroy'],['image'=>$image->id])}}"
+                                    method="post">
+                                    @csrf
+                                    @method('delete')
                                     <div class="btn-group">
                                         <a href="{{url($image->full_path)}}" target="_blank"
                                            class="btn btn-sm btn-outline-secondary">Göster</a>
-                                        <button type="button" class="btn btn-sm btn-outline-danger">Sil</button>
+                                        <button type="submit" class="btn btn-sm btn-outline-danger swal-form-confirm"
+                                        data-message="Bu resmi siliyorsunuz ">Sil</button>
                                     </div>
                                 </form>
-                                <small class="text-muted">{{$image->original_name}}</small>
+                                <small class="text-muted">{{$image->id}}-{{$image->original_name}}</small>
                             </div>
                         </div>
                     </div>
                 </div>
-
             @endforeach
         </div>
     </div>

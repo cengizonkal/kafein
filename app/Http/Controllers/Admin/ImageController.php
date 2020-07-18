@@ -29,5 +29,6 @@ class ImageController extends Controller
     {
         Storage::disk('public')->delete($image->path);
         $image->forceDelete();
+        return redirect()->back()->with('message', 'Resim Silindi');
     }
 }
