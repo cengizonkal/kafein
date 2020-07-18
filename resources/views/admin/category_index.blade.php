@@ -6,9 +6,12 @@
 @section('content')
     <div class="container">
         <div class="row">
+
             <div class="col-md-12 mb-2">
+                <h4>Kategoriler</h4>
+                <hr>
                 <a href="{{action([\App\Http\Controllers\Admin\CategoryController::class,'create'])}}"
-                   class="btn btn-success"><i class="fa fa-plus"></i> Yeni Ekle</a>
+                   class="btn btn-success btn-sm"><i class="fa fa-plus"></i> Yeni Kategori Ekle</a>
             </div>
         </div>
         <div class="row justify-content-center">
@@ -36,10 +39,12 @@
                                     </button>
                                     <div class="dropdown-menu">
                                         <a class="dropdown-item"
+                                           href="{{action([\App\Http\Controllers\Admin\ItemController::class,'index'],['category'=>$category->id])}}">Ürünler</a>
+                                        <a class="dropdown-item"
                                            href="{{action([\App\Http\Controllers\Admin\CategoryController::class,'edit'],['category'=>$category->id])}}">Düzenle</a>
                                         <a class="dropdown-item"
                                            href="{{action([\App\Http\Controllers\Admin\ImageController::class,'index'],['imageable'=>'categories','id'=>$category->id])}}">Resimler
-                                            <span class="badge badge-dark">{{$category->images->count()}}</span>
+                                            <span class="badge badge-info">{{$category->images->count()}}</span>
                                         </a>
                                         <div class="dropdown-divider"></div>
                                         <form

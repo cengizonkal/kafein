@@ -16,6 +16,7 @@ use Ramsey\Collection\Collection;
  * @property mixed updated_at
  * @property Category category
  * @property Image[]|Collection images
+ * @property Item[]|Collection items
  */
 class Category extends Model
 {
@@ -29,6 +30,11 @@ class Category extends Model
     public function images()
     {
         return $this->morphMany(Image::class, 'imageable');
+    }
+
+    public function items()
+    {
+        return $this->hasMany(Item::class);
     }
 
 

@@ -13,9 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get(
+    '/',
+    function () {
+        return view('welcome');
+    }
+);
 
 Auth::routes();
 
@@ -31,4 +34,8 @@ Route::get('admin/categories/create', 'Admin\CategoryController@create');
 Route::get('admin/{imageable}/{id}/images', 'Admin\ImageController@index');
 Route::post('admin/{imageable}/{id}/images', 'Admin\ImageController@store');
 Route::delete('admin/images/{image}', 'Admin\ImageController@destroy');
+
+
+Route::get('admin/categories/{category}/items', 'Admin\ItemController@index');
+Route::get('admin/items', 'Admin\ItemController@index');
 
