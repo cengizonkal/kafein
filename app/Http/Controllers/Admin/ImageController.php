@@ -67,7 +67,9 @@ class ImageController extends Controller
 
     public function destroy(Image $image)
     {
-        Storage::disk('public')->delete($image->path);
+
+        Storage::disk('real_public')->delete($image->path);
+        Storage::disk('real_public')->delete($image->thumbnail);
         $image->forceDelete();
         return redirect()->back()->with('message', 'Resim Silindi');
     }

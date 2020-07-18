@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property mixed imageable_id
  * @property mixed imageable_type
  * @property mixed path
+ * @property mixed thumbnail
  * @property mixed is_selected
  * @property mixed width
  * @property mixed height
