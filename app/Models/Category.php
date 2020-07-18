@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Ramsey\Collection\Collection;
 
 /**
  * Class Category
@@ -14,6 +15,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property mixed created_at
  * @property mixed updated_at
  * @property Category category
+ * @property Image[]|Collection images
  */
 class Category extends Model
 {
