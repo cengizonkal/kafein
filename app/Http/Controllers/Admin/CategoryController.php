@@ -16,7 +16,7 @@ class CategoryController extends Controller
         $categories = Category::with('images')
             ->with('items')
             ->with('descendants.items')
-            ->with('parent')
+            ->with('ancestors')
             ->get();
 
         return view('admin/category_index')

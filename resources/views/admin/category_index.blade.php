@@ -64,7 +64,7 @@
                             </td>
                             <td>{{$category->id}}</td>
                             <td>{{$category->title}}</td>
-                            <td>@isset($category->parent){{$category->parent->title}}@endisset</td>
+                            <td>@isset($category->ancestors){{$category->ancestors->pluck('title')->join(' / ')}}@endisset</td>
                         </tr>
                     @endforeach
                     </tbody>
@@ -78,7 +78,7 @@
     <script type="text/javascript">
         window.addEventListener('load', function () {
             $('#item-table').DataTable({
-                "order": [[ 2, "desc" ]]
+                "order": [[ 1, "desc" ]]
             });
         })
     </script>

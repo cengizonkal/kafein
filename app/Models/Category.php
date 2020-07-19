@@ -17,7 +17,7 @@ use Ramsey\Collection\Collection;
  * @property mixed updated_at
  * @property Category parent
  * @property Category[]|Collection descendants
- *
+ * @property Category[]|Collection ancestors
  * @property Image[]|Collection images
  * @property Item[]|Collection items
  */
