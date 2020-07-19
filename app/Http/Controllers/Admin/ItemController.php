@@ -12,7 +12,9 @@ class ItemController extends Controller
     public function index(Category $category = null)
     {
         if ($category) {
-            $items = $category->items;
+            $categories = $category->descendants()->pluck('id');
+            $categories[] = $category->getKey();
+            $items = Item::with('category')->whereIn('category_id', $categories)->get();
         } else {
             $items = Item::with('category')->get();
         }
@@ -24,6 +26,5 @@ class ItemController extends Controller
 
     public function edit(Item $item)
     {
-
     }
 }
