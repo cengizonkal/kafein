@@ -3,8 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Collection;
 use Kalnoy\Nestedset\NodeTrait;
-use Ramsey\Collection\Collection;
+
 
 /**
  * Class Category
@@ -16,14 +17,15 @@ use Ramsey\Collection\Collection;
  * @property mixed created_at
  * @property mixed updated_at
  * @property Category parent
- * @property Category[]|Collection descendants
- * @property Category[]|Collection ancestors
+ * @property Category[]|\Kalnoy\Nestedset\Collection descendants
+ * @property Category[]|\Kalnoy\Nestedset\Collection ancestors
  * @property Image[]|Collection images
  * @property Item[]|Collection items
  */
 class Category extends Model
 {
     use NodeTrait;
+
 
     public function images()
     {
@@ -53,6 +55,17 @@ class Category extends Model
             $items = $items->merge($descendant->items);
         }
         return $items->merge($this->items);
+    }
+
+    public function getPath()
+    {
+        return $this->ancestors->pluck('title')->join('/ ');
+    }
+
+    public function getFullName()
+    {
+        $pre = $this->ancestors->pluck('title')->join('/ ');
+        return $pre ? $pre . '/ ' . $this->title : $this->title;
     }
 
 

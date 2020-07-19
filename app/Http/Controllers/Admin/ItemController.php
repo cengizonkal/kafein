@@ -14,11 +14,10 @@ class ItemController extends Controller
         if ($category) {
             $categories = $category->descendants()->pluck('id');
             $categories[] = $category->getKey();
-            $items = Item::with('category')->whereIn('category_id', $categories)->get();
+            $items = Item::with('category')->with('images')->whereIn('category_id', $categories)->get();
         } else {
-            $items = Item::with('category')->get();
+            $items = Item::with('category')->with('images')->get();
         }
-
         return view('admin/item_index')
             ->with('category', $category)
             ->with('items', $items);

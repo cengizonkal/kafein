@@ -64,7 +64,7 @@
                             </td>
                             <td>{{$category->id}}</td>
                             <td>{{$category->title}}</td>
-                            <td>@isset($category->ancestors){{$category->ancestors->pluck('title')->join(' / ')}}@endisset</td>
+                            <td>@isset($category->ancestors){{$category->getPath()}}@endisset</td>
                         </tr>
                     @endforeach
                     </tbody>

@@ -21,7 +21,7 @@
                             @foreach($categories as $cat)
                                 <option
                                     value="{{$cat->id}}"
-                                    @if($cat->id==old('category_id')) selected @endif>{{$cat->ancestors->implode('title',' / ')}} / {{$cat->title}}</option>
+                                    @if($cat->id==old('category_id')) selected @endif>{{$cat->getFullName()}}</option>
                             @endforeach
                         </select>
                         @error('category_id')
