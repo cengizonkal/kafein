@@ -20,6 +20,8 @@ class CreateCategoriesTable extends Migration
             $table->unsignedBigInteger('category_id')->nullable();
             $table->foreign('category_id')->references('id')->on('categories');
             $table->string('image_path')->nullable();
+            $table->unsignedInteger('_lft');
+            $table->unsignedInteger('_rgt');
             $table->timestamps();
         });
     }

@@ -21,4 +21,9 @@ class ItemController extends Controller
             ->with('category', $category)
             ->with('items', $items);
     }
+
+    public function edit(Item $item)
+    {
+
+    }
 }

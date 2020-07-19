@@ -38,4 +38,6 @@ Route::delete('admin/images/{image}', 'Admin\ImageController@destroy');
 
 Route::get('admin/categories/{category}/items', 'Admin\ItemController@index');
 Route::get('admin/items', 'Admin\ItemController@index');
+Route::get('admin/items/{item}/edit', 'Admin\ItemController@edit');
+Route::delete('admin/items/{item}', 'Admin\ItemController@destroy');
 

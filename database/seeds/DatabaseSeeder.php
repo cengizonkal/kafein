@@ -29,7 +29,7 @@ class DatabaseSeeder extends Seeder
 
             ]
         );
-        $categories = factory(\App\Models\Category::class, 10)->create();
+        $categories = factory(\App\Models\Category::class, 20)->create();
         $items = factory(\App\Models\Item::class, 150)->create();
         factory(\App\Models\ServiceTable::class, 15)->create();
         factory(\App\Models\Order::class, 500)->create();
@@ -48,5 +48,11 @@ class DatabaseSeeder extends Seeder
                 'imageable_type' => \App\Models\Item::class
             ]
         );
+
+        $parentId = $categories->pull(1)->id;
+        foreach ($categories as $category) {
+            $category->parent_id = $parentId;
+            $category->save();
+        }
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Kalnoy\Nestedset\NodeTrait;
 use Ramsey\Collection\Collection;
 
 /**
@@ -20,7 +21,7 @@ use Ramsey\Collection\Collection;
  */
 class Category extends Model
 {
-
+    use NodeTrait;
 
     public function category()
     {
@@ -37,5 +38,9 @@ class Category extends Model
         return $this->hasMany(Item::class);
     }
 
+    public function getParentIdName()
+    {
+        return 'category_id';
+    }
 
 }

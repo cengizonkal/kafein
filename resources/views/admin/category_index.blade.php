@@ -63,7 +63,7 @@
                             </td>
                             <td>{{$category->id}}</td>
                             <td>{{$category->title}}</td>
-                            <td>@isset($category->category){{$category->category->title}}@endisset</td>
+                            <td>@isset($category->parent){{$category->parent->title}}@endisset</td>
                         </tr>
                     @endforeach
                     </tbody>
@@ -71,6 +71,9 @@
             </div>
         </div>
     </div>
+    <?php
+    dd(\DB::getQueryLog())
+    ?>
 @endsection
 @push('scripts')
     <script type="text/javascript">
