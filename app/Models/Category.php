@@ -15,18 +15,14 @@ use Ramsey\Collection\Collection;
  * @property mixed category_id
  * @property mixed created_at
  * @property mixed updated_at
- * @property Category category
+ * @property Category parent
+ * @property Category[]|Collection children
  * @property Image[]|Collection images
  * @property Item[]|Collection items
  */
 class Category extends Model
 {
     use NodeTrait;
-
-//    public function category()
-//    {
-//        return $this->belongsTo(Category::class);
-//    }
 
     public function images()
     {

@@ -21,8 +21,9 @@ class CategoryController extends Controller
 
     public function create()
     {
+
         /** @var Category[] $categories */
-        $categories = Category::all()->sortBy('title');
+        $categories = Category::with('ancestors')->get()->sortBy('title');
         return view('admin/category_create')
             ->with('categories', $categories);
     }

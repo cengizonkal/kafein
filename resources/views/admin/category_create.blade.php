@@ -21,7 +21,7 @@
                             @foreach($categories as $cat)
                                 <option
                                     value="{{$cat->id}}"
-                                    @if($cat->id==old('category_id')) selected @endif>{{$cat->title}}</option>
+                                    @if($cat->id==old('category_id')) selected @endif>{{$cat->ancestors->implode('title',' / ')}} / {{$cat->title}}</option>
                             @endforeach
                         </select>
                         @error('category_id')
@@ -45,6 +45,7 @@
             </div>
         </div>
     </div>
+
 @endsection
 @push('scripts')
     <script type="text/javascript">
