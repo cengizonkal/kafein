@@ -23,10 +23,10 @@ class Category extends Model
 {
     use NodeTrait;
 
-    public function category()
-    {
-        return $this->belongsTo(Category::class);
-    }
+//    public function category()
+//    {
+//        return $this->belongsTo(Category::class);
+//    }
 
     public function images()
     {
@@ -41,6 +41,12 @@ class Category extends Model
     public function getParentIdName()
     {
         return 'category_id';
+    }
+
+
+    public function setCategoryIdAttribute($value)
+    {
+        $this->setParentIdAttribute($value);
     }
 
 }

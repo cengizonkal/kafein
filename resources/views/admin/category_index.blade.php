@@ -71,9 +71,7 @@
             </div>
         </div>
     </div>
-    <?php
-    dd(\DB::getQueryLog())
-    ?>
+
 @endsection
 @push('scripts')
     <script type="text/javascript">

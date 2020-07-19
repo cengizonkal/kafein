@@ -12,10 +12,9 @@ class CategoryController extends Controller
 
     public function index()
     {
-        \DB::enableQueryLog();
+
         /** @var Category[] $categories */
         $categories = Category::with('images')->with('items')->with('parent')->get();
-
         return view('admin/category_index')
             ->with('categories', $categories);
     }
