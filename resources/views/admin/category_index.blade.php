@@ -23,7 +23,7 @@
                         <th style="width: 5%"></th>
                         <th>ID</th>
                         <th>ADI</th>
-                        <th>Üst</th>
+                        <th>Üst Kategori</th>
                     </tr>
 
                     </thead>
@@ -43,8 +43,9 @@
                                            href="{{action([\App\Http\Controllers\Admin\CategoryController::class,'edit'],['category'=>$category->id])}}">Düzenle</a>
                                         <a class="dropdown-item"
                                            href="{{url("admin/categories/{$category->id}/items")}}">Ürünler
-                                            <span class="badge badge-info">{{$category->items->count()}}</span>
+                                            <span class="badge badge-info">{{$category->allItems()->count()}}</span>
                                         </a>
+
                                         <a class="dropdown-item"
                                            href="{{action([\App\Http\Controllers\Admin\ImageController::class,'index'],['imageable'=>'categories','id'=>$category->id])}}">Resimler
                                             <span class="badge badge-info">{{$category->images->count()}}</span>
@@ -76,7 +77,9 @@
 @push('scripts')
     <script type="text/javascript">
         window.addEventListener('load', function () {
-            $('#item-table').DataTable();
+            $('#item-table').DataTable({
+                "order": [[ 2, "desc" ]]
+            });
         })
     </script>
 @endpush

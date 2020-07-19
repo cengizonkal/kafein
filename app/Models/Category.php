@@ -16,7 +16,8 @@ use Ramsey\Collection\Collection;
  * @property mixed created_at
  * @property mixed updated_at
  * @property Category parent
- * @property Category[]|Collection children
+ * @property Category[]|Collection descendants
+ *
  * @property Image[]|Collection images
  * @property Item[]|Collection items
  */
@@ -44,5 +45,15 @@ class Category extends Model
     {
         $this->setParentIdAttribute($value);
     }
+
+    public function allItems()
+    {
+        $items = collect();
+        foreach ($this->descendants as $descendant) {
+            $items = $items->merge($descendant->items);
+        }
+        return $items->merge($this->items);
+    }
+
 
 }
