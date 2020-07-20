@@ -26,4 +26,9 @@ class ItemController extends Controller
     public function edit(Item $item)
     {
     }
+
+    public function store(Request $request)
+    {
+
+    }
 }
