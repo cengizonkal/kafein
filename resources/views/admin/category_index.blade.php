@@ -24,6 +24,8 @@
                         <th>ID</th>
                         <th>ADI</th>
                         <th>Üst Kategori</th>
+                        <th>Resimler</th>
+                        <th>Ürünler</th>
                     </tr>
 
                     </thead>
@@ -65,6 +67,8 @@
                             <td>{{$category->id}}</td>
                             <td>{{$category->title}}</td>
                             <td>@isset($category->ancestors){{$category->getPath()}}@endisset</td>
+                            <td>{{$category->images->count()}}</td>
+                            <td>{{$category->allItems()->count()}}</td>
                         </tr>
                     @endforeach
                     </tbody>

@@ -62,7 +62,7 @@
                             <td>{{$item->id}}</td>
                             <td>{{$item->title}}</td>
                             <td>{{$item->price}}</td>
-                            <td>{{$item->category->title}}</td>
+                            <td>{{$item->category->getFullName()}}</td>
                         </tr>
                     @endforeach
                     </tbody>
