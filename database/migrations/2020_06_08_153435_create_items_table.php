@@ -22,6 +22,7 @@ class CreateItemsTable extends Migration
             $table->string('image_path')->nullable();
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories');
+            $table->boolean('is_available')->default(0);
             $table->timestamps();
         });
     }

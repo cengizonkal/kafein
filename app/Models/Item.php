@@ -19,6 +19,7 @@ use Ramsey\Collection\Collection;
  * @property mixed updated_at
  * @property Image[]|Collection images
  * @property Category category
+ * @property boolean is_available
  */
 class Item extends Model
 {
