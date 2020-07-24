@@ -5,7 +5,7 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-12">
+            <div class="col-md-8">
                 <h2>Yeni Ürün Oluştur</h2>
                 <hr>
                 <form method="post"
@@ -31,14 +31,35 @@
                         <input id="title" type="text" name="title"
                                value="{{old('title')}}"
                                class="form-control @error('title') is-invalid @enderror"
-                               placeholder="Lütfen bir kategori adı giriniz"
+                               placeholder="Lütfen bir ürün adı giriniz"
                                required>
                         @error('title')
                         <div class="invalid-feedback">{{$message}}</div>
                         @enderror
                     </div>
+                    <div class="form-group">
+                        <label for="description">Açıklama</label>
+                        <textarea id="description" name="description"
+                                  class="form-control @error('description') is-invalid @enderror">
+                               {{old('description')}}
+                        </textarea>
+                        @error('description')
+                        <div class="invalid-feedback">{{$message}}</div>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="price">Adı</label>
+                        <input id="price" type="number" name="price"
+                               value="{{old('price')}}"
+                               class="form-control @error('price') is-invalid @enderror"
+                               placeholder="Lütfen bir ürün fiyatı giriniz"
+                               required>
+                        @error('price')
+                        <div class="invalid-feedback">{{$message}}</div>
+                        @enderror
+                    </div>
 
-                    <button type="submit" class="btn btn-primary">Oluştur</button>
+                    <button type="submit" class="btn btn-success">Oluştur</button>
                 </form>
             </div>
         </div>

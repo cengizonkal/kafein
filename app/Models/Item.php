@@ -23,6 +23,8 @@ use Ramsey\Collection\Collection;
  */
 class Item extends Model
 {
+    protected $casts = ['options' => 'array'];
+
     public function category()
     {
         return $this->belongsTo(Category::class);

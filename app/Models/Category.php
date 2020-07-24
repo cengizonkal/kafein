@@ -59,13 +59,13 @@ class Category extends Model
 
     public function getPath()
     {
-        return $this->ancestors->pluck('title')->join('/ ');
+        return $this->ancestors->pluck('title')->join(' / ');
     }
 
     public function getFullName()
     {
-        $pre = $this->ancestors->pluck('title')->join('/ ');
-        return $pre ? $pre . '/ ' . $this->title : $this->title;
+        $pre = $this->ancestors->pluck('title')->join(' / ');
+        return $pre ? $pre . ' / ' . $this->title : $this->title;
     }
 
 

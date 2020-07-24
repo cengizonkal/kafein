@@ -27,6 +27,13 @@ class ItemController extends Controller
     {
     }
 
+    public function create()
+    {
+        $categories = Category::with('ancestors')->get();
+        return view('admin/item_create')
+            ->with('categories',$categories);
+    }
+
     public function store(Request $request)
     {
 

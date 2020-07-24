@@ -12,7 +12,7 @@
             <div class="col-md-12 mb-2">
                 <h4>@if($category){{$category->title}} Kategorisi Altındaki @endif Ürünler </h4>
                 <hr>
-                <a href="{{action([\App\Http\Controllers\Admin\CategoryController::class,'create'])}}"
+                <a href="{{action([\App\Http\Controllers\Admin\ItemController::class,'create'])}}"
                    class="btn btn-success btn-sm"><i class="fa fa-plus"></i> Yeni Ürün Ekle</a>
             </div>
         </div>
