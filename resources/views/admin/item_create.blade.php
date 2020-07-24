@@ -48,13 +48,22 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label for="price">Adı</label>
+                        <label for="price">Fiyat</label>
                         <input id="price" type="number" name="price"
                                value="{{old('price')}}"
                                class="form-control @error('price') is-invalid @enderror"
                                placeholder="Lütfen bir ürün fiyatı giriniz"
                                required>
                         @error('price')
+                        <div class="invalid-feedback">{{$message}}</div>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="is_available">Mevcut</label>
+                        <input id="is_available" type="checkbox" name="is_available"
+                               value="{{old('is_available')}}"
+                               class="form-check @error('is_available') is-invalid @enderror">
+                        @error('is_available')
                         <div class="invalid-feedback">{{$message}}</div>
                         @enderror
                     </div>
