@@ -23,6 +23,7 @@ class CreateOrdersTable extends Migration
             $table->foreign('order_status_id')->references('id')->on('order_statuses');
             $table->json('options');
             $table->text('comment');
+            $table->tinyInteger('amount')->default(1);
             $table->timestamps();
             $table->softDeletes();
         });
