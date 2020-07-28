@@ -11,7 +11,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property mixed service_table_id
  * @property mixed item_id
  * @property mixed order_status_id
- * @property array options
  * @property mixed comment
  * @property mixed created_at
  * @property mixed updated_at
@@ -19,7 +18,5 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Order extends Model
 {
-    protected $casts = [
-        'options' => 'array',
-    ];
+
 }
