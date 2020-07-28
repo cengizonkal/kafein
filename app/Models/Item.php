@@ -11,7 +11,6 @@ use Ramsey\Collection\Collection;
  * @property mixed id
  * @property mixed title
  * @property mixed description
- * @property mixed options
  * @property mixed price
  * @property mixed image_path
  * @property mixed category_id
@@ -23,7 +22,6 @@ use Ramsey\Collection\Collection;
  */
 class Item extends Model
 {
-    protected $casts = ['options' => 'array'];
 
     public function category()
     {
@@ -34,4 +32,6 @@ class Item extends Model
     {
         return $this->morphMany(Image::class, 'imageable');
     }
+
+
 }
