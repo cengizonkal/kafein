@@ -100,12 +100,9 @@
                 </button>
             </div>
             <div class="toast-body">
-
                 @if (session('message'))
-                    {{ session('message') }}
+                    <strong>{{ session('message') }}</strong>
                 @endif
-
-
             </div>
         </div>
     </div>
