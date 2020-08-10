@@ -25,17 +25,34 @@ class ItemController extends Controller
 
     public function edit(Item $item)
     {
+        $categories = Category::with('ancestors')->get();
+
+        return view('admin/item_edit')
+            ->with('item', $item)
+            ->with('categories', $categories);
+    }
+
+    public function update(Item $item, Request $request)
+    {
+        $item->fill($request->all());
+        $item->is_available = $request->has('is_available');
+        $item->save();
+        return redirect()->back()->with('message', $item->title . ' Güncellendi');
     }
 
     public function create()
     {
         $categories = Category::with('ancestors')->get();
         return view('admin/item_create')
-            ->with('categories',$categories);
+            ->with('categories', $categories);
     }
 
     public function store(Request $request)
     {
-
+        $item = new Item();
+        $item->fill($request->all());
+        $item->is_available = $request->has('is_available');
+        $item->save();
+        return redirect()->back()->with('message', $item->title . ' Oluşturuldu');
     }
 }

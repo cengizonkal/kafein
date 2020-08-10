@@ -53,3 +53,5 @@ $('.swal-form-confirm').click(function (e) {
         }
     })
 })
+
+$('.toast').toast({delay: 10000});

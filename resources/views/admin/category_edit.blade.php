@@ -48,13 +48,7 @@
     </div>
 @endsection
 @push('scripts')
-    <script type="text/javascript">
-        window.addEventListener('load', function () {
-            $('.select2').select2({
-                'theme': 'bootstrap4'
-            });
-        })
-    </script>
+
 @endpush
 
 

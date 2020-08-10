@@ -41,6 +41,6 @@ Route::get('admin/items', 'Admin\ItemController@index');
 Route::get('admin/items/create', 'Admin\ItemController@create');
 Route::post('admin/items', 'Admin\ItemController@store');
 Route::get('admin/items/{item}/edit', 'Admin\ItemController@edit');
-Route::get('admin/items/{item}', 'Admin\ItemController@update');
+Route::patch('admin/items/{item}', 'Admin\ItemController@update');
 Route::delete('admin/items/{item}', 'Admin\ItemController@destroy');
 
