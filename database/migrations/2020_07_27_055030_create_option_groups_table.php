@@ -17,7 +17,10 @@ class CreateOptionGroupsTable extends Migration
             $table->id();
             $table->boolean('is_multiple')->default(false);
             $table->string('title');
+            $table->unsignedBigInteger('item_id');
+            $table->foreign('item_id')->references('id')->on('items');
             $table->timestamps();
+
 
         });
     }
