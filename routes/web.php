@@ -44,3 +44,10 @@ Route::get('admin/items/{item}/edit', 'Admin\ItemController@edit');
 Route::patch('admin/items/{item}', 'Admin\ItemController@update');
 Route::delete('admin/items/{item}', 'Admin\ItemController@destroy');
 
+Route::get('admin/items/{item}/option-groups', 'Admin\Item\OptionGroupController@index');
+Route::get('admin/items/{item}/option-groups/create', 'Admin\Item\OptionGroupController@create');
+
+
+
+
+

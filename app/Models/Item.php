@@ -19,6 +19,7 @@ use Ramsey\Collection\Collection;
  * @property Image[]|Collection images
  * @property Category category
  * @property boolean is_available
+ * @property OptionGroup[]|Collection optionGroups
  */
 class Item extends Model
 {
@@ -33,6 +34,11 @@ class Item extends Model
     public function images()
     {
         return $this->morphMany(Image::class, 'imageable');
+    }
+
+    public function optionGroups()
+    {
+        return $this->hasMany(OptionGroup::class);
     }
 
 
