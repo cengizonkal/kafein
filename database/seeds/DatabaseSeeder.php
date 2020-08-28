@@ -49,6 +49,20 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
+
+        $optionGroups = factory(\App\Models\OptionGroup::class, 50)->create(
+            [
+                'item_id' => $items->random(1)->first()->id
+            ]
+        );
+
+        factory(\App\Models\Option::class, 100)->create(
+            [
+                'option_group_id' => $optionGroups->random(1)->first()->id
+            ]
+        );
+
+
         $parentId = $categories->pull(1)->id;
         foreach ($categories as $category) {
             $category->parent_id = $parentId;

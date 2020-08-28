@@ -5,8 +5,12 @@
 use App\Models\OptionGroup;
 use Faker\Generator as Faker;
 
-$factory->define(OptionGroup::class, function (Faker $faker) {
-    return [
-
-    ];
-});
+$factory->define(
+    OptionGroup::class,
+    function (Faker $faker) {
+        return [
+            'is_multiple' => $faker->boolean(),
+            'title' => $faker->colorName,
+        ];
+    }
+);
