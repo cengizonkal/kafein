@@ -13,4 +13,8 @@ class OptionGroupController extends Controller
         return view('admin/item/option_group_index')
             ->with('item', $item);
     }
+
+    public function create(Item $item)
+    {
+    }
 }

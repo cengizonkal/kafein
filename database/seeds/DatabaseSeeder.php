@@ -34,33 +34,35 @@ class DatabaseSeeder extends Seeder
         factory(\App\Models\ServiceTable::class, 15)->create();
         factory(\App\Models\Order::class, 500)->create();
 
-        factory(\App\Models\Image::class, 50)->create(
-            [
-                'imageable_id' => $categories->random(1)->first()->id,
-                'imageable_type' => \App\Models\Category::class
-            ]
-        );
+        foreach ($items as $item) {
+            factory(\App\Models\Image::class)->create(
+                [
+                    'imageable_id' => $item->id,
+                    'imageable_type' => \App\Models\Image::class
+                ]
+            );
 
+            $optionGroup = factory(\App\Models\OptionGroup::class)->create(
+                [
+                    'item_id' => $item->id
+                ]
+            );
 
-        factory(\App\Models\Image::class, 100)->create(
-            [
-                'imageable_id' => $items->random(1)->first()->id,
-                'imageable_type' => \App\Models\Item::class
-            ]
-        );
+            factory(\App\Models\Option::class, 5)->create(
+                [
+                    'option_group_id' => $optionGroup->id
+                ]
+            );
+        }
 
-
-        $optionGroups = factory(\App\Models\OptionGroup::class, 50)->create(
-            [
-                'item_id' => $items->random(1)->first()->id
-            ]
-        );
-
-        factory(\App\Models\Option::class, 100)->create(
-            [
-                'option_group_id' => $optionGroups->random(1)->first()->id
-            ]
-        );
+        foreach ($categories as $category) {
+            factory(\App\Models\Image::class, 1)->create(
+                [
+                    'imageable_id' => $category->id,
+                    'imageable_type' => \App\Models\Category::class
+                ]
+            );
+        }
 
 
         $parentId = $categories->pull(1)->id;

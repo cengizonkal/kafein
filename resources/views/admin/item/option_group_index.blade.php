@@ -10,7 +10,7 @@
             <div class="col-md-12 mb-2">
                 <h4>Ürün {{$item->title}} Seçenekleri</h4>
                 <hr>
-                <a href="{{action([\App\Http\Controllers\Admin\Item\OptionGroupController::class,'create'])}}"
+                <a href="{{action([\App\Http\Controllers\Admin\Item\OptionGroupController::class,'create'],['item'=>$item->id])}}"
                    class="btn btn-success btn-sm"><i class="fa fa-plus"></i> Yeni Grup Ekle</a>
             </div>
         </div>
@@ -39,10 +39,10 @@
                                     <div class="dropdown-menu">
 
                                         <a class="dropdown-item"
-                                           href="{{action([\App\Http\Controllers\Admin\Item\OptionGroupController::class,'edit'],['category'=>$category->id])}}">Düzenle</a>
+                                           href="{{action([\App\Http\Controllers\Admin\Item\OptionGroupController::class,'edit'],['optionGroup'=>$optionGroup->id])}}">Düzenle</a>
                                         <div class="dropdown-divider"></div>
                                         <form
-                                            action="{{action([\App\Http\Controllers\Admin\Item\OptionGroupController::class,'destroy'],['category'=>$category->id])}}"
+                                            action="{{action([\App\Http\Controllers\Admin\Item\OptionGroupController::class,'destroy'],['optionGroup'=>$optionGroup->id])}}"
                                             method="post">
                                             @method('delete')
                                             @csrf
@@ -67,7 +67,7 @@
     <script type="text/javascript">
         window.addEventListener('load', function () {
             $('#item-table').DataTable({
-                "order": [[ 1, "desc" ]]
+                "order": [[1, "desc"]]
             });
         })
     </script>
