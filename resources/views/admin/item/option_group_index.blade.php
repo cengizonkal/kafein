@@ -11,7 +11,7 @@
                 <h4>Ürün {{$item->title}} Seçenekleri</h4>
                 <hr>
                 <a href="{{action([\App\Http\Controllers\Admin\Item\OptionGroupController::class,'create'],['item'=>$item->id])}}"
-                   class="btn btn-success btn-sm"><i class="fa fa-plus"></i> Yeni Grup Ekle</a>
+                   class="btn btn-success btn-sm"><i class="fa fa-plus"></i> Yeni Seçenek Grubu Ekle</a>
             </div>
         </div>
         <div class="row justify-content-center">
@@ -39,10 +39,10 @@
                                     <div class="dropdown-menu">
 
                                         <a class="dropdown-item"
-                                           href="{{action([\App\Http\Controllers\Admin\Item\OptionGroupController::class,'edit'],['optionGroup'=>$optionGroup->id])}}">Düzenle</a>
+                                           href="{{action([\App\Http\Controllers\Admin\Item\OptionGroupController::class,'edit'],['optionGroup'=>$optionGroup->id,'item'=>$item->id])}}">Düzenle</a>
                                         <div class="dropdown-divider"></div>
                                         <form
-                                            action="{{action([\App\Http\Controllers\Admin\Item\OptionGroupController::class,'destroy'],['optionGroup'=>$optionGroup->id])}}"
+                                            action="{{action([\App\Http\Controllers\Admin\Item\OptionGroupController::class,'destroy'],['optionGroup'=>$optionGroup->id,'item'=>$item->id])}}"
                                             method="post">
                                             @method('delete')
                                             @csrf
