@@ -44,12 +44,12 @@ Route::get('admin/items/{item}/edit', 'Admin\ItemController@edit');
 Route::patch('admin/items/{item}', 'Admin\ItemController@update');
 Route::delete('admin/items/{item}', 'Admin\ItemController@destroy');
 
-Route::get('admin/items/{item}/option-groups', 'Admin\Item\OptionGroupController@index');
-Route::get('admin/items/{item}/option-groups/create', 'Admin\Item\OptionGroupController@create');
-Route::post('admin/items/{item}/option-groups', 'Admin\Item\OptionGroupController@store');
-Route::get('admin/items/{item}/option-groups/{optionGroup}/edit', 'Admin\Item\OptionGroupController@edit');
-Route::patch('admin/items/{item}/option-groups/{optionGroup}', 'Admin\Item\OptionGroupController@update');
-Route::delete('admin/items/{item}/option-groups/{optionGroup}', 'Admin\Item\OptionGroupController@destroy');
+Route::get('admin/items/{item}/option-groups', 'Admin\OptionGroupController@index');
+Route::get('admin/items/{item}/option-groups/create', 'Admin\OptionGroupController@create');
+Route::post('admin/items/{item}/option-groups', 'Admin\OptionGroupController@store');
+Route::get('admin/items/{item}/option-groups/{optionGroup}/edit', 'Admin\OptionGroupController@edit');
+Route::patch('admin/items/{item}/option-groups/{optionGroup}', 'Admin\OptionGroupController@update');
+Route::delete('admin/items/{item}/option-groups/{optionGroup}', 'Admin\OptionGroupController@destroy');
 
 
 
