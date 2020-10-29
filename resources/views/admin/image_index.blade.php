@@ -12,7 +12,7 @@
                 {{csrf_field()}}
                 <div class="form-group">
                     <label></label>
-                    <input type="file" name="image" class="form-control-file">
+                    <input type="file" name="image" class="form-control-file" accept="image/*">
                 </div>
                 <button type="submit" class="btn btn-success btn-sm">Ekle</button>
             </form>

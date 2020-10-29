@@ -35,6 +35,8 @@ class ImageController extends Controller
             $imageRelativeThumbnailPath = 'images/' . $imageable . '/' . $randomName . '_t.png';
 
             $imagePath = public_path($imageRelativePath);
+
+
             \Intervention\Image\Facades\Image::make($temporaryPath)->resize(
                 config('image.width'),
                 config('image.height'),
