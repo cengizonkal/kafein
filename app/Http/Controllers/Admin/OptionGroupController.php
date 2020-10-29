@@ -12,7 +12,8 @@ class OptionGroupController extends Controller
 
     public function index(Item $item)
     {
-        return view('admin/option_group_index');
+        return view('admin/option_group_index')
+            ->with($item);
     }
 
 
@@ -36,13 +37,16 @@ class OptionGroupController extends Controller
 
     public function edit(Item $item, OptionGroup $optionGroup)
     {
-        //
+        return view('admin/option_group_edit')
+            ->with('item', $item)
+            ->with('optionGroup', $optionGroup);
+
     }
 
 
     public function update(Request $request, Item $item, OptionGroup $optionGroup)
     {
-        //
+
     }
 
 
