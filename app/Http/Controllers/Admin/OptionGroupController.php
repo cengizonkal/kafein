@@ -45,6 +45,10 @@ class OptionGroupController extends Controller
 
     public function update(Request $request, Item $item, OptionGroup $optionGroup)
     {
+        $optionGroup->fill($request->all());
+        $optionGroup->is_multiple = $request->has('is_multiple');
+        $optionGroup->save();
+        return redirect()->back()->with('message', $optionGroup->title . ' Güncellendi');
     }
 
 

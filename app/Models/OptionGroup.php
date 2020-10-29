@@ -20,6 +20,7 @@ use Illuminate\Support\Collection;
  */
 class OptionGroup extends Model
 {
+    protected $guarded = ['id'];
 
     public function options()
     {
